@@ -1,29 +1,121 @@
+<div align="center">
+
+<img src="public/brand-mark.svg" alt="Mausam logo" width="72" />
+
 # Mausam — Weather across India
 
-A client-side weather dashboard for India. It includes country-wide city search, current conditions and forecasts, a draggable 3D-style globe, an illustrative India forecast map, PM-based air-quality estimates, IMD alert links, saved-city comparisons, charts, a trip planner, ten-language controls and an installable offline shell.
+**One calm dashboard for India-wide forecasts, official IMD alerts, air-quality estimates and trip planning.**
 
-## Contents and requirements
+[**Live demo →**](https://krishnamagrawal05.github.io/MAUSAM/)
 
-This is a static site: no build step, server, package install or API key is needed. Keep the folder structure intact: `index.html` is at the repository root, with the app scripts and styles in `src/`, and the video, icons and PWA manifest in `public/`. The local asset paths and service worker are relative to the site root, so project sites hosted under `/OWNER/REPOSITORY/` work too.
+</div>
 
-To test locally, extract the archive and run `python3 -m http.server 8000` in the extracted folder, then open `http://localhost:8000`. Browser geolocation and service-worker features need HTTPS or `localhost`.
+---
 
-## Publish with GitHub Pages
+## Overview
 
-1. Download and **extract** `Mausam-India-GitHub-Pages.zip` on your computer. Do not upload the ZIP itself; upload its contents while keeping `src/` and `public/` as folders.
-2. Create a new repository on GitHub. On GitHub Free, Pages publishing requires a **public** repository. If you want to keep the repository private, check whether your GitHub plan supports Pages from private repositories.
-3. In the repository, choose **Add file → Upload files**, then drag in the extracted files and folders. Keep `index.html` in the repository root. Commit the upload to `main`.
-4. Open **Settings → Pages**. Under **Build and deployment**, choose **Deploy from a branch**, then select branch **main** and folder **/(root)**, and click **Save**.
-5. Check the **Actions** tab for the Pages deployment. A project site normally appears at `https://OWNER.github.io/REPOSITORY/`; a user site in a repository named `OWNER.github.io` appears at `https://OWNER.github.io/`. GitHub notes a first publish can take several minutes.
+**Mausam** (मौसम, "weather") is a web app that brings everything you need to know about the weather in India into a single, easy-to-read page. Search any Indian city or PIN code, or use your current location, and get current conditions, hourly and five-day forecasts, air-quality estimates, official weather warnings, and tools to compare cities and plan trips.
 
-GitHub Pages sites are public on the internet, including sites published from a private repository on plans that allow that setup. Do not put secrets or private data in the site. This app uses public browser-side data services and contains no API keys.
+The interface is available in **10 languages** and can be installed on your device like an app.
 
-## Data notes
+## Features
 
-Weather and air-quality model data are from Open-Meteo; the current free API is for non-commercial use. Obtain a suitable licence before commercial use. The AQI number is a PM2.5/PM10-based estimate, not a full CPCB station reading or medical advice. The map visualizes forecast-model guidance, not live radar. Severe-weather warnings link to the official IMD feed and portal. Location permission is requested only after a visitor chooses **Use my location**.
+| Feature | What it does |
+| --- | --- |
+| **Search** | Find any Indian city or PIN code, or tap *Use my location*. |
+| **Current conditions** | Temperature, feels-like, humidity, wind (at 10 m), pressure, visibility and UV index. |
+| **Hour-by-hour forecast** | Scrollable hourly forecast for your selected city, shown in IST. |
+| **Five-day forecast** | Daily highs, lows and conditions. |
+| **Weather trends** | 24-hour temperature and rain-chance charts. |
+| **IMD weather alerts** | Official warnings from the India Meteorological Department, with source links. |
+| **Air-quality outlook** | PM2.5 / PM10-based model estimate with a 0–400+ scale. |
+| **India weather map** | Model-based map layers for rain, clouds and wind, with a forecast-time control. |
+| **Monsoon patterns** | An illustrative, interactive view of wind, clouds and rain across India (with a pause-motion option). |
+| **Explore India** | Browse weather across India's many microclimates. |
+| **Saved cities** | Save favourite cities, stored locally on your device. |
+| **Compare cities** | Compare current conditions and five-day highs/lows for up to three locations. |
+| **Trip planner** | Pick a start, destination and travel day to compare weather over the next five days. |
+| **Multilingual** | English, हिन्दी, বাংলা, తెలుగు, मराठी, தமிழ், ಕನ್ನಡ, മലയാളം, ગુજરાતી, ਪੰਜਾਬੀ. |
+| **Installable (PWA-style)** | Add it to your home screen from the *Install* button. |
 
-## GitHub references
+## Data sources
 
-- [GitHub Pages overview](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages)
-- [Configure a branch publishing source](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
-- [GitHub Pages quickstart](https://docs.github.com/en/pages/quickstart)
+- **[Open-Meteo](https://open-meteo.com/en/docs)** — weather forecasts and air-quality model data
+- **[IMD (India Meteorological Department)](https://mausam.imd.gov.in/responsive/subDivisionWiseWarningGIS.php)** — official weather warnings
+- **[GeoNames](https://www.geonames.org/)** — place and location search
+
+## Important notes and limitations
+
+- The **India weather map** shows interpolated model guidance. It is **not** live radar, satellite imagery or observed rainfall.
+- The **air-quality figure** is a coarse estimate from PM2.5/PM10 only. It is **not** a CPCB station reading, a complete Indian AQI, or medical advice.
+- The **Monsoon patterns** visual is illustrative.
+- The **trip planner** covers the next five days only and is planning guidance; forecasts can change.
+- For severe weather, always **follow guidance from local authorities** and official IMD bulletins.
+- Saved cities are stored **on your device only**.
+
+## Getting started
+
+### Use it online
+
+Just open **https://krishnamagrawal05.github.io/MAUSAM/**
+
+### Run it locally
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/krishnamagrawal05/MAUSAM.git
+cd MAUSAM
+
+# 2. Serve the folder with any static server, for example:
+npx serve .
+# or
+python3 -m http.server 8000
+```
+
+Then open the local address shown in your terminal (e.g. `http://localhost:8000`).
+
+> If the project uses a build step (e.g. Vite/npm), replace the commands above with `npm install` and `npm run dev`.
+
+## Project structure
+
+```
+MAUSAM/
+├── index.html
+├── public/
+│   ├── brand-mark.svg      # logo
+│   └── hero-weather.mp4    # hero background video
+└── ...
+```
+
+> Update this tree to match your actual repository layout.
+
+## Deployment
+
+The site is hosted on **GitHub Pages**. Pushing to the configured branch publishes the latest version at the live URL above.
+
+## Licensing and attribution
+
+- The free Open-Meteo forecast API is for **non-commercial use**; commercial use requires a licence from Open-Meteo.
+- Weather warnings are © their respective publisher, the India Meteorological Department.
+- Place data is provided by GeoNames.
+
+Add your own project licence here (e.g. MIT) and a `LICENSE` file.
+
+## Contributing
+
+Suggestions and pull requests are welcome.
+
+1. Fork the repo
+2. Create a feature branch (`git checkout -b feature/your-idea`)
+3. Commit your changes
+4. Open a pull request
+
+## Author
+
+Made by **Krishna Agrawal** — [@krishnamagrawal05](https://github.com/krishnamagrawal05)
+
+---
+
+<div align="center">
+<sub>Bharat, under the open sky. 🌦️</sub>
+</div>
